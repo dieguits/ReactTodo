@@ -1,5 +1,3 @@
-In the project directory, you can run:
-
 To run the project open the console, go to the project directory and execute the task below
 
 ### `yarn start`

@@ -9,9 +9,9 @@ import "./AddTask.scss";
 
 const db = firebase.firestore(firebase);
 
-export default function AddTask() {
+export default function AddTask(props) {
     const [task, setTask] = useState("");
-
+    const { setReloadTask } = props;
     const onSubmit = (e) => {
         e.preventDefault();
         if (!isEmpty(task)) {
@@ -22,6 +22,7 @@ export default function AddTask() {
                 })
                 .then(() => {
                     setTask("");
+                    setReloadTask(true);
                     console.log("Task Created");
                 });
         }

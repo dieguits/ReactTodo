@@ -24,14 +24,26 @@ export default function Task(props) {
             });
     };
 
+    const deleteTask = () => {
+        console.log(task.id);
+        console.log(task.name);
+
+        db.collection("tasks")
+            .doc(task.id)
+            .delete()
+            .then(() => {
+                setReloadTask(true);
+            });
+    };
+
     return (
         <div className="task">
             <div>
-                <Check className={task.completed ? 'completed' : ''} onClick={completeTask} />
+                <Check className={task.completed ? "completed" : ""} onClick={completeTask} />
             </div>
             <div>{task.name}</div>
             <div>
-                <Delete />
+                <Delete onClick={deleteTask} />
             </div>
         </div>
     );
